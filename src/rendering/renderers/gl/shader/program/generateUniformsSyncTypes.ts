@@ -6,7 +6,7 @@
 
 import { parseFunctionBody } from '../../../shared/utils/parseFunctionBody';
 
-export type SingleSetterFunction = (cu: any, cv: any, v: any, location: WebGLUniformLocation, gl: any) => void;
+type SingleSetterFunction = (cu: any, cv: any, v: any, location: WebGLUniformLocation, gl: any) => void;
 export type ArraySetterFunction = (v: any, location: WebGLUniformLocation, gl: any) => void;
 
 export type GLSL_TYPE =

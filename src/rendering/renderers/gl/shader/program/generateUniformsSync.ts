@@ -9,7 +9,7 @@ import { UniformGroup } from '../../../shared/shader/UniformGroup';
 import { GLSL_TO_ARRAY_SETTERS, GLSL_TO_SINGLE_SETTERS_CACHED } from './generateUniformsSyncTypes';
 import { uniformParsers } from './uniformParsers';
 
-import type { UniformsSyncCallback } from '../../../shared/shader/utils/createUniformBufferSync';
+import type { UniformsSyncCallback } from '../../../shared/shader/utils/createUniformBufferSyncTypes';
 import type { GLSL_TYPE } from './generateUniformsSyncTypes';
 
 export function generateUniformsSync(group: UniformGroup, uniformData: Record<string, any>): UniformsSyncCallback
@@ -62,8 +62,7 @@ export function generateUniformsSync(group: UniformGroup, uniformData: Record<st
         {
             if (uniformParsers[j].test(data, uniform))
             {
-                funcFragments.push(`name = "${i}";`);
-                funcFragments.push(uniformParsers[j].code);
+                funcFragments.push(`name = "${i}";`, uniformParsers[j].code);
                 parsed = true;
 
                 break;

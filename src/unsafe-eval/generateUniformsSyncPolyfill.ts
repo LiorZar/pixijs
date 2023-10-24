@@ -8,7 +8,7 @@ import { UniformGroup } from '../rendering/renderers/shared/shader/UniformGroup'
 
 import type { IUniformData } from '../rendering/renderers/gl/shader/GlProgram';
 import type { GLSL_TYPE } from '../rendering/renderers/gl/shader/program/generateUniformsSyncTypes';
-import type { UniformsSyncCallback } from '../rendering/renderers/shared/shader/utils/createUniformBufferSync';
+import type { UniformsSyncCallback } from '../rendering/renderers/shared/shader/utils/createUniformBufferSyncTypes';
 
 export function generateUniformsSyncPolyfill(
     group: UniformGroup,

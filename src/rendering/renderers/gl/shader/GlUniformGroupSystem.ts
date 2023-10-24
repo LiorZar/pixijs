@@ -3,7 +3,7 @@ import { unsafeEvalSupported } from '../../../../utils/unsafeEvalSupported';
 import { generateUniformsSync } from './program/generateUniformsSync';
 
 import type { UniformGroup } from '../../shared/shader/UniformGroup';
-import type { UniformsSyncCallback } from '../../shared/shader/utils/createUniformBufferSync';
+import type { UniformsSyncCallback } from '../../shared/shader/utils/createUniformBufferSyncTypes';
 import type { System } from '../../shared/system/System';
 import type { GlRenderingContext } from '../context/GlRenderingContext';
 import type { WebGLRenderer } from '../WebGLRenderer';
