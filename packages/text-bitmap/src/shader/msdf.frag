@@ -8,6 +8,14 @@ uniform vec4 uColor;
 // on 2D applications fwidth is screenScale / glyphAtlasScale * distanceFieldRange
 uniform float uFWidth;
 
+//--------------------------------------------------------------------------------------------------------------------//
+const float LINE = 0.45;
+const float OUTTER_LINE_MIN = 0.4;
+const float OUTTER_LINE_MAX = 0.7;
+const float INNER_LINE_MIN = 0.51;
+const float INNER_LINE_MAX = 0.55;
+//--------------------------------------------------------------------------------------------------------------------//
+
 void main(void) {
 
   // To stack MSDF and SDF we need a non-pre-multiplied-alpha texture.
@@ -28,11 +36,15 @@ void main(void) {
     alpha = 1.0;
   }
 
+  vec3 clr = uColor.rgb;
   // Gamma correction for coverage-like alpha
-  float luma = dot(uColor.rgb, vec3(0.299, 0.587, 0.114));
+  float luma = dot(clr, vec3(0.299, 0.587, 0.114));
   float gamma = mix(1.0, 1.0 / 2.2, luma);
   float coverage = pow(uColor.a * alpha, gamma);  
+  
+  if(median <= OUTTER_LINE_MAX)
+    clr = mix(vec3(0), clr, smoothstep(LINE, OUTTER_LINE_MAX, median));
 
   // NPM Textures, NPM outputs
-  gl_FragColor = vec4(uColor.rgb, coverage);
+  gl_FragColor = vec4(clr, coverage);
 }
